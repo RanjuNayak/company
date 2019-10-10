@@ -1,0 +1,72 @@
+
+<div class="container paddingContact-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="white">Let's Get Started!</h1>
+      <p>Contact us today to discuss your next online project.</p>
+    </div>
+  </div>
+</div>
+
+<div class="parallax texture" id="parallax-cta" style="background-image:url(https://www.solodev.com/assets/hero-slider/slide1.jpg);"></div>
+<!-- contact-form -->
+<div class="container form">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="row">
+        <div class="form-group col-md-12">
+           <h1><b>{{title | uppercase}} </b></h1>
+            <h4>the cost of our intership program</h4>
+            <p style="color: #000">{{CostOfOurInternship | INRCurrency:'INR'}}</p>
+            <h4>it's Gonna start on ---> {{ data.nextCertificateUpdate | date:'yyyy-MM-dd'}}  </h4>
+             <h4>  <p style="color: #000">Multiplier: {{2 | Multiplier: 10}}</p></h4>
+            <h3 ><i class="glyphicon glyphicon-phone-alt">&nbsp;</i>Phone-No: +81546728389</h3>
+          <h2>Tell us About Yourself</h2>
+
+
+          <p style="color: #000">Contact us today to discuss how Big Data can help your company!</p>
+        </div>
+      </div>
+      <form name="contactForm" id="contactForm" method="POST" action="">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="control-group">
+              <label>First Name</label>
+              <input type="text" class="demo-default form-control" placeholder="First Name">
+            </div>
+            <div class="control-group">
+              <label>Last Name</label>
+              <input type="text" class="demo-default form-control" placeholder="Last Name">
+            </div>
+            <div class="control-group">
+              <label>Company</label>
+              <input type="text" class="demo-default form-control" placeholder="Company">
+            </div>
+            <div class="control-group">
+              <label>Phone #</label>
+              <input type="text" class="demo-default form-control" placeholder="Phone #">
+            </div>
+            <div class="control-group">
+              <label>Email</label>
+              <input type="text" class="demo-default form-control" placeholder="yourname@domain.com">
+            </div>
+            <div class="control-group">
+              <label for="select-beast">I'm Interested In:</label>
+              <select id="select-beast" class="demo-default" placeholder="Select a service...">
+                <option value="">Select a service...</option>
+                <option value="4">Digital Marketing</option>
+                <option value="1">Social Media</option>
+                <option value="3">E-Commerce</option>
+                <option value="5">Mobile Advertising</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-md-12 text-center">
+            <input type="submit" class="btn btn-primary" value="Contact Us">
+          </div>
+        </div>
+      </form>
+    </div>

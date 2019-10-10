@@ -1,0 +1,182 @@
+<div class="parallax texture">
+
+  <!-- <div class="parallax texture" id="parallax-cta" style="background-image:url(https://www.solodev.com/assets/hero-slider/slide1.jpg);"></div> -->
+  <img src="assets/slide1 (2).jpg" width="100%" height="250" class="img-fluid" alt="Responsive image">
+
+  <!-- contact-form -->
+</div>
+<div class="container form">
+  <div class="row">
+     <div class="col-md-12">
+        <div class="row">
+           <div class="form-group col-md-12" style="margin-top: -90px">
+              <h1 style="color:rgb(255, 250, 250)">Company Details </h1>
+              <p style="color: rgb(255, 255, 255)">Contact us today to discuss how Big Data can help your company!</p>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <p>Multiplier: {{2 | Multiplier: 10}}</p>
+  <p-toast [style]="{marginTop: '80px'}"></p-toast>
+  <button  type="button" class="btn btn-success" data-toggle="modal"  style="width:200px;margin-left: 1px" data-target="#myModal" >Add Company</button>
+  <br>
+  <br>
+  <h3>Search Here &nbsp;<i class="glyphicon glyphicon-search"></i></h3>
+  <input type="text" #searchInput class="form-control" style="width:200px;margin-left: 1px" (keyup)="SearchCompany(searchInput.value)" placeholder="search company..." >
+  <br>
+  <!-- <div style="overflow-x:auto;">
+     <table class="table">
+        <thead>
+           <tr>
+              <th>Id </th>
+              <th >companyName </th>
+              <th>Address </th>
+
+              <th>state  </th>
+              <th>Country </th>
+
+              <th>Action</th>
+           </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let cmp of Company  | paginate: { itemsPerPage: 5, currentPage: p }; let i=index">
+              <td>{{cmp.id}}</td>
+              <td>{{cmp.name}}</td>
+              <td>{{cmp.description}}</td>
+
+              <td>{{cmp.organizationId}}</td>
+              <td>{{cmp.isactive}}</td>
+
+              <td><button  class="btn btn-primary"(click)="onCompanyDelete(cmp.id)" style="width: 65px">Delete</button>&nbsp;
+                 <button  type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal1" (click)="editCompanyget(i)" >edit</button>
+              </td>
+           </tr>
+        </tbody>
+     </table>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+<p-contextMenu [global]="true" [model]="items"></p-contextMenu>
+<p-table #dt [value]="Company" sortMode="multiple"  [paginator]="true" [rows]="5"  [globalFilterFields]="['name','id','description']" sortMode="multiple">
+<ng-template pTemplate="caption">
+    <div style="text-align: right">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input type="text" pInputText  size="50"placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto"/>
+      </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+      <tr>
+      <th [pSortableColumn]="'id'">id</th>
+      <th [pSortableColumn]="'name'">company Name</th>
+      <th [pSortableColumn]="'description'"> Address</th>
+      <th [pSortableColumn]="'organizationId'"> state</th>
+      <th>Active State</th>
+      <th id="text-align-right">Actions</th>
+    </tr>
+     </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-i=index>
+      <tr>
+       <td>{{ rowData.id }}</td>
+       <td>{{ rowData.name }}</td>
+       <td >{{ rowData.description }}</td>
+        <td >{{ rowData.organizationId }}</td>
+        <td>{{ rowData.isactive }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onCompanyDelete(rowData.id)"> Delete </button>
+          <!-- <button class="btn btn-warning"  (click)="editCompanyget(modal, 'Update',i, rowData)"> Edit</button> -->
+          <button  class="btn btn-warning" data-toggle="modal" data-target="#myModal1" (click)="editCompanyget(myModal,'UPDATE',i,rowData)" >edit</button>
+        </td>
+      </tr>
+    </ng-template>
+</p-table>
+
+
+
+
+
+<!-- ADD -->
+<div class="modal fade-out"  id="myModal" role="dialog" data-backdrop="false">
+    <!-- <div class="modal-backdrop fade out"> -->
+  <div class="modal-dialog">
+   <div class="modal-content">
+        <div class="container">
+           <form (ngSubmit)="onCompanySave(f)" #f="ngForm">
+            <div class="modal-header">
+            <h4  class="modal-title" style="margin-left: 120px">Company-Add</h4>
+            </div>
+           <div class="form-group" >
+             <label>Company Name<span style="color:red">*</span></label>
+              <input  name="name"  ngModel required class="form-control"  style="width: 500px"  type="text" placeholder="Enter CompanyName">
+            </div>
+
+           <div class="form-group" >
+              <label>Address <span style="color:red">*</span></label>
+              <input name="description" ngModel required class="form-control" style="width: 500px"  type="text"  placeholder="Enter Address ">
+           </div>
+           <div class="form-group" >
+              <label>phoneno</label>
+              <input name="createdby" ngModel  class="form-control" style="width: 500px"  type="text"  placeholder="Enter phoneno ">
+           </div>
+           <div class="form-group" >
+              <label>State<span style="color:red">*</span></label>
+              <input name="organizationId" ngModel required class="form-control" style="width: 500px"  type="text"  placeholder="Enter State ">
+           </div>
+           <div class="form-group" >
+              <label>Country <span style="color:red">*</span></label>
+              <input name="isactive" ngModel required class="form-control" style="width: 500px"  type="text"  placeholder="Enter Country ">
+           </div>
+           <div class="form-group">
+              <button  type="submit" [disabled]="f.invalid" style="width: 100px" class="form-control btn btn-primary">Save</button>
+           </div>
+           </form>
+        </div>
+        <div class="modal-footer">
+           <button mat-raised-button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+     </div>
+  </div>
+</div>
+
+
+
+<!-- edit -->
+
+<div class="modal fade" id="myModal1" role="dialog"  data-backdrop="false">
+    <!-- <div class="modal-backdrop fade out"> -->
+  <div class="modal-dialog">
+
+     <div class="modal-content">
+        <div class="container">
+           <form (ngSubmit)="UpdateCompany(f1)"  #f1="ngForm">
+              <div class="modal-header">
+           <h2 style="margin-left: 80px">Company-Edit</h2>
+              </div>
+           <div class="form-group" >
+              <label>company Id</label>
+              <input name="id" [(ngModel)]="cmpid"  class="form-control" style="width: 500px"  type="text" placeholder="Enter Company Id">
+           </div>
+           <div class="form-group" >
+              <label>Company Name</label>
+              <input name="name" [(ngModel)]="Companyname"  class="form-control" style="width: 500px"  type="text" placeholder="Enter Company Name">
+           </div>
+           <div class="form-group" >
+              <label>Address</label>
+              <input name="description"  [(ngModel)]="department" class="form-control"  style="width: 500px"  type="text"  placeholder="Enter Department ">
+           </div>
+           <div class="form-group">
+              <button type="submit" style="width: 100px"  class="form-control btn btn-primary" >Update</button>
+           </div>
+           </form>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- </div> -->
+
