@@ -1,3 +1,12 @@
+<!-- <nav class="navbar navbar-inverse bg-inverse" *ngIf="!isUserLoggedIn">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        {{title}}
+      </a>
+    </div>
+  </div>
+</nav> -->
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -9,6 +18,7 @@
     <br>
     <mat-nav-list>
         <!-- <a mat-list-item routerLinkActive="active" routerLink="home"><i class="glyphicon glyphicon-home">&nbsp;</i>home </a> -->
+
       <a mat-list-item routerLinkActive="active" routerLink="aboutus"><i class="glyphicon glyphicon-home">&nbsp;</i>aboutus </a>
       <a mat-list-item routerLinkActive="active" routerLink="/Company"><i class='glyphicon glyphicon-apple'>&nbsp;</i>company</a>
       <a mat-list-item routerLinkActive="active" routerLink="contactus"><i class="glyphicon glyphicon-phone-alt">&nbsp;</i>contact-us</a>
@@ -37,8 +47,7 @@
       <!-- <a mat-list-item routerLinkActive="active" routerLink=""><i class="glyphicon glyphicon-phone-alt">&nbsp;</i>home</a>  -->
     </mat-toolbar>
     <!-- Add Content Here -->
-  <router-outlet></router-outlet>
-
+<router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

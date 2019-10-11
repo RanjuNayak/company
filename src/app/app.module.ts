@@ -28,12 +28,15 @@ import { SvgComponent } from './svg/svg.component';
 import {TableModule} from 'primeng/table';
 import {ContextMenuModule} from 'primeng/contextmenu';
 
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+// import {DragDropModule} from 'primeng/dragdrop';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+
+
 
 // import { appendCurrencyPipe } from './custom.pipe';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -52,7 +55,11 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     // appendCurrencyPipe,
     INRCurrencyPipe,
     MultiplierPipe,
-    SvgComponent
+    SvgComponent,
+
+    RegisterComponent,
+
+    LoginComponent,
 
 
 
@@ -63,13 +70,15 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     BrowserModule,
     routing,HttpClientModule,BrowserAnimationsModule,FormsModule,ToastModule,NgxPaginationModule, LayoutModule, MatToolbarModule,
     MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,MatInputModule, ReactiveFormsModule,TableModule,ContextMenuModule,
+    DragDropModule,
+  ],
+  providers: [MessageService
 
   ],
-  providers: [MessageService,
 
-  ],
+    entryComponents: [SvgComponent],
+    bootstrap: [AppComponent, ],
 
-    bootstrap: [AppComponent]
 
 })
 export class AppModule { }

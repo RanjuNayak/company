@@ -8,9 +8,9 @@ import { companyComponent } from './Company.component';
   providedIn: 'root'
 })
 export class CmpService {
- url:string='https://59f28050.ngrok.io/api/Settings/GetDesignations';
- deleteUrl:string='https://59f28050.ngrok.io/api/Settings/DeleteDesignation?DesignationId=';
- insupUrl:string='https://59f28050.ngrok.io/api/Settings/InsUpdateDesignation';
+ url:string='https://22f41d4d.ngrok.io/api/Settings/GetDesignations';
+ deleteUrl:string='https://22f41d4d.ngrok.io/api/Settings/DeleteDesignation?DesignationId=';
+ insupUrl:string='https://22f41d4d.ngrok.io/api/Settings/InsUpdateDesignation';
   constructor(private _http:HttpClient) {}
 
   getAllCompany()

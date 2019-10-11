@@ -61,9 +61,12 @@ export class companyComponent implements OnInit {
 
      );
   }
-  onCompanyDelete(id:number)
-  {
-     if (confirm("are you sure you want to delete")) {
+
+   onCompanyDelete(id:number)
+
+      {
+
+       if (confirm("do you really want to delete??")) {
      this._data.deletCompany(id).subscribe(
       (data:any)=>{
 
@@ -74,10 +77,12 @@ export class companyComponent implements OnInit {
           }
 
         );
+
         this.msg.add({severity: 'success', summary: 'success Message', detail: 'deleted succesfully'});
       } );
   }
-  }
+}
+
   onCompanySave(f:NgForm)
   {
     this._data.addCompany(f.value).subscribe((data:any) => {
